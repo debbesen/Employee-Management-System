@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 
     user: 'root',
 
-    password: 'employee',
+    password: '',
     database: 'employee_list'
 });
 
@@ -64,7 +64,7 @@ function runSearch() {
           break;
 
         case "Exit":
-          console.log('leaving!');;
+          console.log('leaving!');
           break;
         }
       });
@@ -97,7 +97,7 @@ function runSearch() {
             runSearch();
         });
       });
-  };
+  }; 
 
 
 
