@@ -77,22 +77,27 @@ function runSearch() {
   function addDepartment() {
     inquirer
       .prompt([{
-        name: "artist",
-        type: "input",
-        message: "What artist would you like to search for?"
+        name: "department",
+        type: "list",
+        message: "What department would you like to add?",
+        choices: [
+            'Sales',
+            'Manager',
+            'Engineering',
+            'Legal Team'
+        ]
       }])
 
 
       .then(function(answer) {
-        var query = "SELECT position, song, year FROM top5000 WHERE ?";
-        connection.query(query, { artist: answer.artist }, function(err, res) {
-          for (var i = 0; i < res.length; i++) {
-            console.log("Position: " + res[i].position + " || Song: " + res[i].song + " || Year: " + res[i].year);
-          }
-          runSearch();
+        var query = "INSERT INTO department (department_name) VALUES (?)";
+        connection.query(query, [answer.department], function(err, res) {
+       if (err) throw err;
+            console.log(res);
+            runSearch();
         });
       });
-  }
+  };
 
 
 
@@ -100,32 +105,73 @@ function runSearch() {
 
   function  addRole() {
     inquirer
-      .prompt([{
-        name: "artist",
-        type: "input",
-        message: "What artist would you like to search for?"
-      }])
+      .prompt([
+          {
+
+        name: "title",
+        type: "list",
+        message: "What new role would you like to add?",
+        choices: [
+            'Salesperson',
+            'Manager',
+            'Team lead',
+            'Engineer' 
+        ]
+ }, 
+        {
+            name: "salary",
+            type: "input",
+            message: "employee salary here"
+        },
+        {
+            name: "department_id",
+            type: "input",
+            message: "employee department_id here"
+        },
+    ])
       .then(function(answer) {
-        var query = "SELECT position, song, year FROM top5000 WHERE ?";
-        connection.query(query, { artist: answer.artist }, function(err, res) {
-          for (var i = 0; i < res.length; i++) {
-            console.log("Position: " + res[i].position + " || Song: " + res[i].song + " || Year: " + res[i].year);
-          }
+        var query = "INSERT INTO role(title, salary, department_id) VALUES (?, ?, ?)";
+        connection.query(query, [answer.title, answer.salary, answer.department_id], function(err, res) {
+         if (err) throw err;
+        console.log(res);
+          
           runSearch();
         });
       });
-  }
+  };
 
 
 
 
   function addEmployee() {
     inquirer
-      .prompt([{
-        name: "artist",
+      .prompt([
+          {
+        name: "first_name",
         type: "input",
-        message: "What artist would you like to search for?"
-      }])
+        message: "Employee First Name?"
+
+      },
+          {
+        name: "last_name",
+        type: "input",
+        message: "Employee Last Name?"
+
+      },
+          {
+        name: "first_name",
+        type: "input",
+        message: "Employee First Name?"
+
+      },
+          {
+        name: "first_name",
+        type: "input",
+        message: "Employee First Name?"
+
+      },
+    
+    ])
       .then(function(answer) {
         var query = "SELECT position, song, year FROM top5000 WHERE ?";
         connection.query(query, { artist: answer.artist }, function(err, res) {

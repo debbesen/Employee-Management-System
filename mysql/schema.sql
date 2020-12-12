@@ -1,15 +1,15 @@
-DROP DATABASE  IF EXISTS    employee_listDB;
+DROP DATABASE  IF EXISTS    employee_list;
 
 
-CREATE DATABASE employee_listDB;
+CREATE DATABASE employee_list;
 
 
-USE employee_listDB;
+USE employee_list;
 
 
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(30) NOT NULL,
+  department_name VARCHAR(30) NOT NULL,
   PRIMARY KEY (id), 
 );
 
