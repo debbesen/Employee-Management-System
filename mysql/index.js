@@ -234,7 +234,9 @@ function runSearch() {
         });
       });
   };
-  function  viewRole() {
+
+
+  function  viewRoles() {
     inquirer
     .prompt([
         {
