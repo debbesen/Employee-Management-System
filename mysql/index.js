@@ -183,9 +183,9 @@ function runSearch() {
       });
   };
 
-  //View all depadtments created 
+  //View all depadtments created  
 
-  function viewDepartment() {
+  function viewDepartments() {
     inquirer
       .prompt([{
         name: "departments",
